@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genie Weather Ultra 🧞‍♂️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="light-mode">
+
+    <div id="splashScreen" class="splash-container">
+        <div class="splash-content">
+            <div class="splash-icon">🌤️</div>
+            <h1>Weather<br>Genie Pro</h1>
+            <p>Precise weather at your fingertips.</p>
+            <button onclick="enterApp()" class="start-btn">Get Started</button>
+        </div>
+    </div>
+
+    <div id="appContainer" class="app-container" style="display: none;">
+        
+        <header>
+            <div class="location-badge" onclick="toggleFavorites()">
+                <i class="fa-solid fa-map-pin"></i> <span id="displayLocation">Locating...</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="header-actions">
+                <button onclick="toggleDarkMode()" class="icon-btn"><i class="fa-solid fa-moon"></i></button>
+                <button onclick="getDeviceLocation()" class="icon-btn highlight"><i class="fa-solid fa-location-crosshairs"></i></button>
+            </div>
+        </header>
+
+        <div id="favoritesList" class="favorites-dropdown">
+            <h4>❤️ Saved Cities</h4>
+            <div id="favItems"></div>
+            <div class="add-fav">
+                <input type="text" id="favInput" placeholder="Add City...">
+                <button onclick="addFavorite()">+</button>
+            </div>
+        </div>
+
+        <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="cityInput" placeholder="Search city (e.g. Chennai)...">
+            <button onclick="getWeather()">Go</button>
+        </div>
+
+        <div class="hero-card">
+            <div class="hero-top">
+                <div class="main-temp-box">
+                    <span class="weather-emoji" id="weatherIcon">☀️</span>
+                    <h1 id="temp">--°</h1>
+                </div>
+                <div class="hero-desc">
+                    <h3 id="condition">--</h3>
+                    <p>Feels like <span id="feelsLike">--°</span></p>
+                </div>
+            </div>
+            
+            <div class="smart-pill">
+                <i class="fa-solid fa-lightbulb"></i>
+                <span id="adviceText">Loading smart insights...</span>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card aqi-card">
+                <div class="stat-header"><i class="fa-solid fa-lungs"></i> AQI</div>
+                <h4 id="aqiVal">--</h4>
+                <p id="aqiStatus">--</p>
+                <div class="progress-bar"><div id="aqiBar" style="width: 0%"></div></div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header"><i class="fa-solid fa-sun"></i> UV Index</div>
+                <h4 id="uvVal">--</h4>
+                <p id="uvStatus">--</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header"><i class="fa-solid fa-droplet"></i> Humidity</div>
+                <h4 id="humidity">--%</h4>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header"><i class="fa-solid fa-wind"></i> Wind</div>
+                <h4 id="wind">-- km/h</h4>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h3>Hourly Forecast</h3>
+            <span>Next 24h</span>
+        </div>
+        <div class="hourly-scroll" id="hourlyContainer">
+            </div>
+
+        <div class="section-header">
+            <h3>7-Day Forecast</h3>
+            <span>Weekly</span>
+        </div>
+        <div class="daily-list" id="dailyContainer">
+            </div>
+
+        <footer>
+            <p>Genie Weather Pro • Made with ❤️</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
